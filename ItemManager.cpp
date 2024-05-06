@@ -61,6 +61,7 @@ void ItemManager::ReadItem(Item* item, char*& data) {
 	Read(item->player_sit_path, data);
 	Read(item->unknown_texture_path, data);
 	DecodeName(item);
+	data += 8;
 }
 
 void ItemManager::LoadItems(char* data, size_t data_size) {
@@ -69,7 +70,7 @@ void ItemManager::LoadItems(char* data, size_t data_size) {
 	}
 
 	Read(version, data);
-	if (version != 16) {
+	if (version != 18) {
 		std::cout << "Version isn't supported.\n";
 		return;
 	}
